@@ -5,11 +5,18 @@ services:
     build:
       context: ./           # Path to the directory containing the Dockerfile
       dockerfile: Dockerfile # Name of the Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-password}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-test}
+      MYSQL_USER: ${MYSQL_USER:-admin}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-PT1K3n2023}
     restart: unless-stopped
     volumes:
       - db:/var/lib/mysql
+      - ./docker/certs:/etc/mysql/certs:ro
+      - ./docker/mysql:/docker-entrypoint-initdb.d:ro
     ports:
-      - 33026:3306
+      - 3306:3306
 
 volumes:
   db:
