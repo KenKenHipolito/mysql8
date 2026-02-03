@@ -10,3 +10,8 @@ ALTER USER IF EXISTS 'admin'@'localhost' IDENTIFIED BY 'DevServer1!' REQUIRE SSL
 
 CREATE USER IF NOT EXISTS 'dev'@'%' IDENTIFIED BY 'DevServer1!' REQUIRE NONE;
 CREATE USER IF NOT EXISTS 'dev'@'localhost' IDENTIFIED BY 'DevServer1!' REQUIRE NONE;
+
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%';
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
+GRANT ALL PRIVILEGES ON *.* TO 'dev'@'%';
+GRANT ALL PRIVILEGES ON *.* TO 'dev'@'localhost';
